@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Hey, Avellaneda!!!</title> 
+  <script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-15596935-1']);
+      _gaq.push(['_setDomainName', 'bockra.org']);
+        _gaq.push(['_trackPageview']);
+        
+          (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                        })();
+                        
+                        </script>
+</head> 
+<body>
+  <div id="map" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+  <script type="text/javascript">
+    var locations = [
+
+['Prague, Czech_Republic<br><a href="pic/Prague_b.jpg" target="_blank"><img src="pic/Prague_s.jpg" /></a><br>Author: Gabriela', 50.107778, 14.471389, 1],
+['Brno, Czech_Republic<br><a href="pic/Brno_b.jpg" target="_blank"><img src="pic/Brno_s.jpg" /></a><br>Author: Jakub', 49.2, 16.616667, 2],
+['Zurich, Switzerland<br><a href="pic/Zurich_b.jpg" target="_blank"><img src="pic/Zurich_s.jpg" /></a><br>Author: Marianna', 47.366667, 8.55, 3],
+['Kholmsk, Russia<br><a href="pic/Kholmsk_b.jpg" target="_blank"><img src="pic/Kholmsk_s.jpg" /></a><br>Author: Gena', 46.65, 141.86667, 4],
+['Reading, England<br><a href="pic/Reading_b.jpg" target="_blank"><img src="pic/Reading_s.jpg" /></a><br>Author: Sergey', 51.454167, -0.973056, 5],
+['Paris, France<br><a href="pic/Paris_b.jpg" target="_blank"><img src="pic/Paris_s.jpg" /></a><br>Author: Anne-Marthe', 48.8567, 2.3508, 6],
+['Calgary, Canada<br><a href="pic/Calgary_b.jpg" target="_blank"><img src="pic/Calgary_s.jpg" /></a><br>Author: Viktor', 51.05, -114.066667, 7],
+['Delft, Netherlands<br><a href="pic/Delft_b.jpg" target="_blank"><img src="pic/Delft_s.jpg" /></a><br>Author: Marta', 52.015, 4.356667, 8],
+['Falun, Sweden<br><a href="pic/Falun_b.jpg" target="_blank"><img src="pic/Falun_s.jpg" /></a><br>Author: Anne-Marthe', 60.590086, 15.723984, 9],
+['Vilcabamba, Ecuador<br><a href="pic/Vilcabamba_b.jpg" target="_blank"><img src="pic/Vilcabamba_s.jpg" /></a><br>Author: Anne-Marthe', -4.2448225, -79.2229389, 10],
+['Kurilsk, Russia<br><a href="pic/Kurilsk_b.jpg" target="_blank"><img src="pic/Kurilsk_s.jpg" /></a><br>Author: Slava', 45.25, 147.8833, 11],
+['Freiburg, Germany<br><a href="pic/Freiburg_b.jpg" target="_blank"><img src="pic/Freiburg_s.jpg" /></a><br>Author: Elke', 47.9947, 7.84972, 12],
+['Dublin, Ireland<br><a href="pic/Dublin_b.jpg" target="_blank"><img src="pic/Dublin_s.jpg" /></a><br>Author: Alex', 53.347778, -6.259722, 13],
+['Saint-Petersburg, Russia<br><a href="pic/Saint-Petersburg_b.jpg" target="_blank"><img src="pic/Saint-Petersburg_s.jpg" /></a><br>Author: Alex', 59.95, 30.3, 14]
+
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 2,
+      center: new google.maps.LatLng(51.30, 0.0),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+</body>
+</html>
